@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Claw - Boost Your Digital Presence. Instantly.</title>
+    <meta name="description" content="Smart, fast, and modern digital services for Instagram, YouTube, Spotify, Netflix, and AI assistance.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D0D12;
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #00FFA6, #00E5FF);
+            color: #0D0D12;
+            box-shadow: 0 8px 20px rgba(0, 255, 166, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 255, 166, 0.5);
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #00E5FF, #00FFA6);
+            color: #0D0D12;
+            box-shadow: 0 8px 20px rgba(0, 229, 255, 0.3);
+        }
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 229, 255, 0.5);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(0, 229, 255, 0.1), rgba(0, 255, 166, 0.1));
+            transform: rotate(45deg);
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.4);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 13, 18, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 100;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            color: #00FFA6;
+            font-weight: 700;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #00E5FF;
+        }
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #0D0D12, #1a1a1a);
+        }
+        .hero h1 {
+            font-size: 4rem;
+            color: #00FFA6;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #00FFA6;
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+        }
+        .hero .btn {
+            margin: 0 10px;
+        }
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        .services .card h3 {
+            color: #00E5FF;
+        }
+        .testimonials .card {
+            text-align: center;
+        }
+        .faq .accordion {
+            margin: 15px 0;
+        }
+        .accordion button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: #FFFFFF;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            padding: 15px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        .accordion button:hover {
+            background: rgba(0, 229, 255, 0.2);
+        }
+        .accordion .content {
+            display: none;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+        }
+        /* Footer */
+        footer {
+            background: rgba(13, 13, 18, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 30px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #00E5FF;
+            margin: 0 15px;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Black Claw</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Get Started</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Boost Your Digital Presence. Instantly.</h1>
+            <p>Smart, fast, and modern digital services designed to elevate your online experience.</p>
+            <a href="#services" class="btn btn-primary">Get Started</a>
+            <a href="#services" class="btn btn-secondary">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+        <h2 style="color: #00FFA6; text-align: center; margin-bottom: 50px;">Our Services</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Instagram Growth Services</h3>
+                <p>Enhance your visibility, reach more people, and boost engagement with reliable and modern digital tools.</p>
+                <p style="color: #00FFA6; font-weight: 600; margin: 15px 0;">Starting at $9.99/month</p>
+                <a href="#contact" class="btn btn-secondary">Order Now</a>
+            </div>
+            <div class="card">
+                <h3>YouTube Services (Premium & Music)</h3>
+                <p>Access smooth, fast, and high-quality digital support designed for a better YouTube experience.</p>
+                <p style="color: #00FFA6; font-weight: 600; margin: 15px 0;">Starting at $9.99/month</p>
+                <a href="#contact" class="btn btn-secondary">Order Now</a>
+            </div>
+            <div class="card">
+                <h3>Spotify & Netflix Digital Support</h3>
+                <p>Improve your digital entertainment experience with simple, efficient tools.</p>
+                <p style="color: #00FFA6; font-weight: 600; margin: 15px 0;">Starting at $9.99/month</p>
+                <a href="#contact" class="btn btn-secondary">Order Now</a>
+            </div>
+            <div class="card">
+                <h3>AI Assistance Hub</h3>
+                <p>Smart, fast responses built to help you stay productive and creative.</p>
+                <p style="color: #00FFA6; font-weight: 600; margin: 15px 0;">Starting at $9.99/month</p>
+                <a href="#contact" class="btn btn-secondary">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="container">
+        <h2 style="color: #00FFA6; text-align: center;">Why Choose Us</h2>
+        <p style="text-align: center;">Fast. Reliable. Modern. Our platform blends clean design with powerful technology to bring you a seamless digital experience.</p>
+        <ul style="list-style: none; text-align: center; margin-top: 30px;">
+            <li>⚡ Lightning-fast responses</li>
+            <li>🎨 User-friendly interface</li>
+            <li>🛠️ 24/7 support</li>
+        </ul>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="container">
+        <h2 style="color: #00E5FF; text-align: center;">What Our Users Say</h2>
+        <div class="grid">
+            <div class="card">
+                <p>"Black Claw elevated my Instagram game instantly!"</p>
+                <p>- Youssef</p>
+            </div>
+            <div class="card">
+                <p>"Seamless YouTube and Spotify support—highly reliable."</p>
+                <p>- Mehdi</p>
+            </div>
+            <div class="card">
+                <p>"The AI hub is a game-changer for productivity."</p>
+                <p>- Badr</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container">
+        <h2 style="color: #00FFA6; text-align: center;">Frequently Asked Questions</h2>
+        <div class="accordion">
+            <button onclick="toggleAccordion(this)">How do I get started?</button>
+            <div class="content">Sign up for free and explore our services.</div>
+        </div>
+        <div class="accordion">
+            <button onclick="toggleAccordion(this)">Is it secure?</button>
+            <div class="content">Yes, we use top-tier encryption for all data.</div>
+        </div>
+        <div class="accordion">
+            <button onclick="toggleAccordion(this)">What pricing options are available?</button>
+            <div class="content">Check our Services page for details.</div>
+        </div>
+        <div class="accordion">
+            <button onclick="toggleAccordion(this)">Can I cancel anytime?</button>
+            <div class="content">Absolutely, no long-term commitments.</div>
+        </div>
+        <div class="accordion">
+            <button onclick="toggleAccordion(this)">Do you offer support?</button>
+            <div class="content">Yes, via WhatsApp or email.</div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container">
+        <h2 style="color: #00E5FF; text-align: center;">Black Claw</h2>
+        <p style="text-align: center;">We create simple, modern, and reliable digital tools to help users grow their presence and enjoy better online experiences. Our platform blends futuristic design with powerful technology.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container">
+        <h2 style="color: #00FFA6; text-align: center;">Get in Touch</h2>
+        <p style="text-align: center;">We're here to help.</p>
+        <a href="https://wa.me/212602329345?text=Hello%20from%20Digital%20Boost%20Hub" class="btn btn-primary" style="display: block; margin: 20px auto; width: 250px;">Contact via WhatsApp</a>
+        <p style="text-align: center; margin: 20px 0;">Phone / WhatsApp: <a href="tel:+212602329345" style="color: #00E5FF;">+20 551 153 2945</a></p>
+        <p style="text-align: center; margin: 20px 0;">Email: <a href="mailto:motanabikf4@gmail.com" style="color: #00E5FF;">8bader4eda@gmail.com</a></p>
+        <form id="contactForm" style="max-width: 600px; margin: 0 auto;">
+            <input type="text" placeholder="Name" required style="width: 100%; padding: 15px; margin: 10px 0; border-radius: 25px; border: none; background: rgba(255, 255, 255, 0.1); color: #FFFFFF;">
+            <input type="email" placeholder="Email" required style="width: 100%; padding: 15px; margin: 10px 0; border-radius: 25px; border: none; background: rgba(255, 255, 255, 0.1); color: #FFFFFF;">
+            <textarea placeholder="Message" required style="width: 100%; padding: 15px; margin: 10px 0; border-radius: 25px; border: none; background: rgba(255, 255, 255, 0.1); color: #FFFFFF; height: 120px;"></textarea>
+            <button type="submit" class="btn btn-secondary" style="width: 100%;">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Digital Boost Hub. All rights reserved.</p>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Twitter</a> | <a href="#">LinkedIn</a>
+    </footer>
+
+    <script>
+        // Accordion Toggle
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent! (In a real site, this would connect to a backend.)');
+        });
+    </script>
+</body>
+</html>
